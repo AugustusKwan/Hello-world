@@ -75,7 +75,7 @@ try:
       print question
 
       raw_input("> ")
-      print "ANSWER: %S\n\n" % answer
+      print "ANSWER: %s\n\n" % answer
 
 except EOFError:
   print "\nBye"
