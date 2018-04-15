@@ -1,0 +1,24 @@
+import json
+import requests
+
+citydict = {
+	'Beijing':'01010100',
+	'Guangzhou':'101280101'
+}
+
+while True:
+	city = input('The city weather:')
+	if city == 'exit':
+		break
+	else:
+		try:
+			citycode = citydict[city]
+		except KeyError:
+			print('Please enter a correct city')
+			continue
+
+		file = 'C:/users/' + citycode+'.html'
+		cityhtml = open(file,encoding = 'UTF-8')
+		cityinfo = bs4.BeautifulSoup(cityhtml,'lxml')
+		cityjson = json.loads(cityinfo.html.body.string)
+		print("city: %s High: %s C Low: %s C",%(city,cityjson['weather']['temp2'],cityjson['weatherjson']['temp1']))
